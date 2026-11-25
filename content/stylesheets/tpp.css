@@ -114,3 +114,5 @@
 .md-typeset table.tpp-plain td .tpp-st { margin-bottom: .1rem; }
 .md-typeset .tpp-sts { display: inline-flex; flex-wrap: wrap; gap: .2rem .25rem; align-items: baseline; }
 .md-typeset .tpp-sts .tpp-st { margin: 0; }
+.md-typeset table.tpp-plain th.tpp-sub { text-align: left; font-weight: 600; }
+.md-typeset table.tpp-tbsym td:first-child { font-size: .8rem; }

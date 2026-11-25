@@ -177,10 +177,29 @@ def attr(s):
     return html.escape(str(s), quote=True)
 
 
+def tb_sym_tex(sym):
+    """TeX of a Thom-Boardman symbol stored as digits: '110' -> \\Sigma^{110}."""
+    return r'\Sigma^{%s}' % sym
+
+
+def tb_sym_html(sym):
+    return f'Σ<sup>{esc(sym)}</sup>'
+
+
+def tb_parent(sym):
+    """Id of the class Sigma^r (r = first index of the symbol) if it has a page."""
+    tid = 'Sigma' + sym[0]
+    return tid if tid in TBCAT else None
+
+
 def name_html(eid):
     if eid in TBCAT:
         return tb_html(eid)
-    return multi_html(eid) if eid in MULTI else mono_html(eid)
+    if eid in MULTI:
+        return multi_html(eid)
+    if eid.startswith('ideal_') and CAT.get(eid, {}).get('name'):     # singularities named by their ideal
+        return esc(CAT[eid]['name'])
+    return mono_html(eid)
 
 
 def name_tex(eid):
@@ -422,10 +441,15 @@ def mono_page_text(mid):
         facts.append(('Local algebra', ('ideal ' + esc(alg)) + (('<br><span class="tpp-meta">also written ' + esc(', '.join(e['ideal_alternatives'])) + '</span>') if e.get('ideal_alternatives') else '')))
     if e.get('mu') is not None:
         facts.append(('Milnor number <span class="tpp-nt">μ</span>', str(e['mu'])))
-    if e.get('tb_class') or e.get('sigma'):
-        tb = e.get('tb_class') or e.get('sigma')
+    if e.get('tb_symbol'):
+        sym = e['tb_symbol']
         open_in = any('open in its Thom-Boardman' in r for r in e.get('remarks', []) or [])
-        facts.append(('Thom–Boardman class', M(tb) + (' <span class="tpp-meta">(open in it)</span>' if open_in else '')))
+        val = M(tb_sym_tex(sym)) + (' <span class="tpp-meta">(open in it)</span>' if open_in else '')
+        if e.get('tb_symbol_old_list'):
+            val += f' <span class="tpp-meta">(the old list has {M(tb_sym_tex(e["tb_symbol_old_list"]))}; to be revisited)</span>'
+        if tb_parent(sym):
+            val += f'<br><span class="tpp-meta">page of the class {elink(cur, tb_parent(sym))}</span>'
+        facts.append(('Thom–Boardman symbol', val))
     if e.get('codim'):
         facts.append(('Codimension', M(e['codim'])))
     if e.get('l_range'):
@@ -1080,7 +1104,7 @@ def contact_catalog(cur):
     rows = []
     for mid, e in CAT.items():
         n = len(CELLS.get(mid, []))
-        rows.append(f'<tr><td>{elink(cur, mid)}</td><td>{e.get("mu", "") if e.get("mu") is not None else ""}</td><td>{M(e["sigma"]) if e.get("sigma") else ""}</td>'
+        rows.append(f'<tr><td>{elink(cur, mid)}</td><td>{e.get("mu", "") if e.get("mu") is not None else ""}</td><td>{M(tb_sym_tex(e["tb_symbol"])) if e.get("tb_symbol") else ""}</td>'
                     f'<td>{esc(e.get("ideal") or "")}</td><td>{M(e["codim"]) if e.get("codim") else ""}</td><td>{esc(e.get("l_range") or "")}</td>'
                     f'<td>{esc(e.get("d") or "")}</td><td>{n}</td><td>{"" if e.get("mather") else "outside the list"}</td></tr>')
     return ('<div class="tpp-tablewrap"><table class="tpp-plain"><thead><tr><th>Name</th><th>μ</th><th>Σ</th><th>Ideal</th><th>Codim</th>'
@@ -1103,11 +1127,6 @@ def multi_catalog(cur):
 
 def tb_page():
     path = 'singularities/thom-boardman.md'
-    groups = defaultdict(list)
-    for mid, e in CAT.items():
-        tb = e.get('tb_class') or e.get('sigma')
-        if tb:
-            groups[tb].append(mid)
     out = [front('Thom–Boardman classes'), '# Thom–Boardman classes\n\n',
            'Thom–Boardman singularities $\\Sigma^I$ are indexed by integer sequences $I$. A class that has data on the portal gets its own page, '
            'like the contact singularities.\n\n']
@@ -1120,13 +1139,38 @@ def tb_page():
             out.append(f'<tr><td>{elink(path, tid)}</td><td>{esc(e.get("definition", ""))}</td><td>{M(e["codim"]) if e.get("codim") else ""}</td>'
                        f'<td>{sc}</td><td>{len(CELLS.get(tid, []))}</td></tr>')
         out.append('</tbody></table></div>\n\n')
-    out += ['## Contact singularities by Thom–Boardman class\n\nFor each class that occurs, the contact singularities belonging to it '
-            '(as recorded on the old site).\n\n',
-            '<div class="tpp-tablewrap"><table class="tpp-plain"><thead><tr><th>Class</th><th>Contact singularities</th></tr></thead><tbody>']
-    for tb in sorted(groups, key=lambda t: (len(re.sub(r'\D', '', t)), t)):
-        out.append(f'<tr><td>{M(tb)}</td><td>' + ', '.join(elink(path, m) for m in groups[tb]) + '</td></tr>')
-    out.append('</tbody></table></div>\n<p class="tpp-legend">Classes written like Σ<sup>{1,1,0}</sup> come from the old Thom polynomial tables; '
-               'those written like Σ<sup>11</sup> are the abbreviated symbols of Mather\'s list. Unifying the two notations is an open task.</p>\n')
+    out.append('## Contact singularities by Thom–Boardman class\n\nEvery contact singularity of the portal with its Thom–Boardman symbol. Symbols are written '
+               'compactly: $\\Sigma^{110}$ stands for $\\Sigma^{1,1,0}$. The first index is the corank, so the singularities are grouped by the class '
+               '$\\Sigma^r$ they lie in; where that class has its own page, the group heading links to it.\n\n')
+    groups = OrderedDict()
+    for mid, e in CAT.items():
+        if e.get('tb_symbol'):
+            groups.setdefault(e['tb_symbol'], []).append(mid)
+    missing = [mid for mid, e in CAT.items() if not e.get('tb_symbol')]
+
+    def order(sym):                      # by corank; within a corank the full symbols first (shorter first), the bare Sigma^r last
+        return (int(sym[0]), len(sym) == 1, len(sym), sym)
+    out.append('<div class="tpp-tablewrap"><table class="tpp-plain tpp-tbsym"><thead><tr><th>Symbol</th><th>Contact singularities</th></tr></thead><tbody>')
+    last_r = None
+    for sym in sorted(groups, key=order):
+        r = sym[0]
+        if r != last_r:
+            last_r = r
+            head = f'{elink(path, "Sigma" + r)} <span class="tpp-meta">— page of the class</span>' if tb_parent(sym) else tb_sym_html(r)
+            out.append(f'<tr><th colspan="2" class="tpp-sub">{head}</th></tr>')
+        members = ', '.join(elink(path, m) for m in groups[sym])
+        fine = OrderedDict()
+        for m in groups[sym]:
+            if CAT[m].get('tb_symbol_old_list'):
+                fine.setdefault(CAT[m]['tb_symbol_old_list'], []).append(m)
+        note = ''
+        if fine:
+            note = ('<br><span class="tpp-meta">Finer symbols, as given in the old list (to be revisited): '
+                    + '; '.join(f'{tb_sym_html(k)} for ' + ', '.join(name_html(m) for m in v) for k, v in fine.items()) + '.</span>')
+        out.append(f'<tr><td>{tb_sym_html(sym)}</td><td>{members}{note}</td></tr>')
+    if missing:
+        out.append('<tr><th colspan="2" class="tpp-sub">Symbol not recorded</th></tr><tr><td></td><td>' + ', '.join(elink(path, m) for m in missing) + '</td></tr>')
+    out.append('</tbody></table></div>\n')
     PAGES[path] = ''.join(out)
 
 
