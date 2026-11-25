@@ -1,9 +1,9 @@
 site_name: Thom Polynomial Portal
 site_description: A registry of known Thom polynomials of singularities
 site_author: Richárd Rimányi
-site_url: https://rimanyi.github.io/tpp-sandbox/
-repo_url: https://github.com/rimanyi/tpp-sandbox
-repo_name: tpp-sandbox
+site_url: https://rimanyi.github.io/tpp/
+repo_url: https://github.com/rimanyi/tpp
+repo_name: tpp
 edit_uri: ""
 docs_dir: docs
 

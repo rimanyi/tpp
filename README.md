@@ -1,7 +1,7 @@
 # Thom Polynomial Portal
 
 The new version of the [Thom Polynomial Portal](https://tpp.web.unc.edu/), migrated from WordPress in November 2026
-and still under construction. Published at **https://rimanyi.github.io/tpp-sandbox/**.
+and still under construction. Published at **https://rimanyi.github.io/tpp/**.
 
 ## Where things are
 
