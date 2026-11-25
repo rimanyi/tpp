@@ -1,0 +1,30 @@
+# title: K-theoretic Thom polynomial of A2, push-forward version, relative dimension l=8
+# entity: A2
+# kind: ktp
+# l: 8
+# codimension: 18
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# terms: 73
+# degrees: 18..28
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- Rimanyi-Szenes, Thm 8.1 (residue formula)
+# expansion-status: THM (theorem) -- Rimanyi-Szenes, Thm 8.4
+# completeness: finite expansion; every nonzero coefficient is listed (theorem)
+# source: R. Rimányi, A. Szenes: Residues, Grothendieck polynomials, and K-theoretic Thom polynomials, Int. Math. Res. Not. IMRN, https://doi.org/10.1093/imrn/rnac345
+# dataset: data set of 2026-11-25, table KTp/A2/l8
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_l8.txt":
+KTp_A2_l8_grothendieck :=
+gr[[9,9]] +2*gr[[10,8]] +4*gr[[11,7]] +8*gr[[12,6]] +16*gr[[13,5]] +32*gr[[14,4]] +64*gr[[15,3]] +128*gr[[16,2]] +256*gr[[17,1]] +512*gr[[18]]
+-2*gr[[10,9]] -5*gr[[11,8]] -12*gr[[12,7]] -28*gr[[13,6]] -64*gr[[14,5]] -144*gr[[15,4]] -320*gr[[16,3]] -704*gr[[17,2]] -1536*gr[[18,1]] -2304*gr[[19]]
++gr[[11,9]] +4*gr[[12,8]] +13*gr[[13,7]] +38*gr[[14,6]] +104*gr[[15,5]] +272*gr[[16,4]] +688*gr[[17,3]] +1696*gr[[18,2]] +4096*gr[[19,1]] +4608*gr[[20]]
+-gr[[13,8]] -6*gr[[14,7]] -25*gr[[15,6]] -88*gr[[16,5]] -280*gr[[17,4]] -832*gr[[18,3]] -2352*gr[[19,2]] -6400*gr[[20,1]] -5376*gr[[21]]
++gr[[15,7]] +8*gr[[16,6]] +41*gr[[17,5]] +170*gr[[18,4]] +620*gr[[19,3]] +2072*gr[[20,2]] +6496*gr[[21,1]] +4032*gr[[22]]
+-gr[[17,6]] -10*gr[[18,5]] -61*gr[[19,4]] -292*gr[[20,3]] -1204*gr[[21,2]] -4480*gr[[22,1]] -2016*gr[[23]]
++gr[[19,5]] +12*gr[[20,4]] +85*gr[[21,3]] +462*gr[[22,2]] +2128*gr[[23,1]] +672*gr[[24]]
+-gr[[21,4]] -14*gr[[22,3]] -113*gr[[23,2]] -688*gr[[24,1]] -144*gr[[25]]
++gr[[23,3]] +16*gr[[24,2]] +145*gr[[25,1]] +18*gr[[26]]
+-gr[[25,2]] -18*gr[[26,1]] -gr[[27]]
++gr[[27,1]]
+:

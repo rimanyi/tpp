@@ -1,11 +1,30 @@
-# title: K-theoretic Thom polynomial of A3, relative dimension l=1
+# title: K-theoretic Thom polynomial of A3, push-forward version, relative dimension l=1
 # entity: A3
 # kind: ktp
 # l: 1
 # codimension: 6
-# format: TeX-like Grothendieck expansion g_{lambda}, stored as a Maple string (to be normalised to Maple syntax)
-# variables: g_{lambda} = (stable) Grothendieck polynomial; K-theoretic fundamental class = class of the structure sheaf of a resolution, pushed forward
-# source: unpublished
-# retrieved-from: https://tpp.web.unc.edu/ktps-l1/ (page modified 2025-02-08)
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# terms: 80
+# degrees: 6..15
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- Rimanyi-Szenes, Thm 10.1 (residue formula)
+# expansion-status: VER (computed and verified numerically) -- compared with the formula at random points
+# completeness: finite expansion; every nonzero coefficient is listed, among all partitions with lambda_6 <= 6 (no term outside this range is expected)
+# source: L. M. Fehér, R. Rimányi: K theory Thom polynomials, in preparation, 2026
+# old-portal: identical to the entry on https://tpp.web.unc.edu/ktps-l1/ (page modified 2025-02-08)
+# dataset: data set of 2026-11-25, table KTp/A3/l1
+# convention: TPP 2026-K
 # Read into Maple with:  read "ktp_l1.txt":
-KTp_A3_l1_tex := "g_{2,2,2}+ 5g_{3,2,1}+ 19g_{4,2}+ 6g_{4,1,1}+ 30g_{5,1}+ 36g_{6} - ( 5g_{3,2,2}+ 35g_{4,2,1}+ 91g_{5,2}+ 39g_{5,1,1}+ 141g_{6,1}+ 108g_{7} ) + 10g_{4,2,2}+ 110g_{5,2,1}+ 195g_{6,2}+ 110g_{6,1,1}+ 283g_{7,1}+ 141g_{8} - ( 10g_{5,2,2}+ 205g_{6,2,1}+ 249g_{7,2}+ 176g_{7,1,1}+ 316g_{8,1}+ 102g_{9}) + 5g_{6,2,2}+ 251g_{7,2,1}+ 210g_{8,2}+ 175g_{8,1,1}+ 213g_{9,1}+ 43g_{10} - (g_{7,2,2}+ 210g_{8,2,1}+ 120g_{9,2}+ 111g_{9,1,1}+ 87g_{10,1}+ 10g_{11} ) + 120g_{9,2,1}+ 45g_{10,2}+ 44g_{10,1,1}+ 20g_{11,1}+ g_{12} - (45g_{10,2,1}+ 10g_{11,2}+ 10g_{11,1,1}+ 2g_{12,1} ) + 10g_{11,2,1}+ g_{12,2}+ g_{12,1,1} - g_{12,2,1}":
+KTp_A3_l1_grothendieck :=
+gr[[2,2,2]] +5*gr[[3,2,1]] +5*gr[[3,3]] +6*gr[[4,1,1]] +19*gr[[4,2]] +30*gr[[5,1]] +36*gr[[6]]
+-5*gr[[3,2,2]] -9*gr[[3,3,1]] -35*gr[[4,2,1]] -33*gr[[4,3]] -39*gr[[5,1,1]] -91*gr[[5,2]] -141*gr[[6,1]] -108*gr[[7]]
++4*gr[[3,3,2]] +10*gr[[4,2,2]] +43*gr[[4,3,1]] +10*gr[[4,4]] +110*gr[[5,2,1]] +81*gr[[5,3]] +110*gr[[6,1,1]] +195*gr[[6,2]] +283*gr[[7,1]] +141*gr[[8]]
+-10*gr[[4,3,2]] -10*gr[[4,4,1]] -10*gr[[5,2,2]] -91*gr[[5,3,1]] -20*gr[[5,4]] -205*gr[[6,2,1]] -105*gr[[6,3]] -176*gr[[7,1,1]] -249*gr[[7,2]] -316*gr[[8,1]] -102*gr[[9]]
++10*gr[[5,3,2]] +20*gr[[5,4,1]] +5*gr[[6,2,2]] +110*gr[[6,3,1]] +15*gr[[6,4]] +251*gr[[7,2,1]] +80*gr[[7,3]] +175*gr[[8,1,1]] +210*gr[[8,2]] +213*gr[[9,1]] +43*gr[[10]]
+-5*gr[[6,3,2]] -15*gr[[6,4,1]] -gr[[7,2,2]] -81*gr[[7,3,1]] -6*gr[[7,4]] -210*gr[[8,2,1]] -36*gr[[8,3]] -111*gr[[9,1,1]] -120*gr[[9,2]] -87*gr[[10,1]] -10*gr[[11]]
++gr[[7,3,2]] +6*gr[[7,4,1]] +36*gr[[8,3,1]] +gr[[8,4]] +120*gr[[9,2,1]] +9*gr[[9,3]] +44*gr[[10,1,1]] +45*gr[[10,2]] +20*gr[[11,1]] +gr[[12]]
+-gr[[8,4,1]] -9*gr[[9,3,1]] -45*gr[[10,2,1]] -gr[[10,3]] -10*gr[[11,1,1]] -10*gr[[11,2]] -2*gr[[12,1]]
++gr[[10,3,1]] +10*gr[[11,2,1]] +gr[[12,1,1]] +gr[[12,2]]
+-gr[[12,2,1]]
+:

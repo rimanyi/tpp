@@ -1,5 +1,5 @@
 site_name: Thom Polynomial Portal
-site_description: A registry of known Thom polynomials of singularities (sandbox draft)
+site_description: A registry of known Thom polynomials of singularities
 site_author: Richárd Rimányi
 site_url: https://rimanyi.github.io/tpp-sandbox/
 repo_url: https://github.com/rimanyi/tpp-sandbox
@@ -65,6 +65,7 @@ nav:
       - What is a Thom polynomial: background/thom-polynomials.md
       - SSM-Thom polynomials: background/ssm.md
       - K-theoretic Thom polynomials: background/k-theory.md
+      - Motivic Segre Thom polynomials: background/motivic.md
       - Conventions and notation: background/conventions.md
   - Singularities:
       - Contact singularities: singularities/contact/index.md
@@ -97,7 +98,21 @@ nav:
           - l = 4: tables/ssm-l4.md
           - l = 5: tables/ssm-l5.md
           - l = 6: tables/ssm-l6.md
-      - K-theoretic: tables/ktp.md
+      - K-theory:
+          - Overview: tables/ktp.md
+          - K-theoretic Tp, l = 0: tables/ktp-l0.md
+          - K-theoretic Tp, l = 1: tables/ktp-l1.md
+          - K-theoretic Tp, l = 2: tables/ktp-l2.md
+          - K-theoretic Tp, l = 3: tables/ktp-l3.md
+          - K-theoretic Tp, l = 4: tables/ktp-l4.md
+          - K-theoretic Tp, l = 5: tables/ktp-l5.md
+          - K-theoretic Tp, l = 6: tables/ktp-l6.md
+          - K-theoretic Tp, l = 7: tables/ktp-l7.md
+          - K-theoretic Tp, l = 8: tables/ktp-l8.md
+          - Motivic Segre Tp, l = 0: tables/ms-l0.md
+          - Motivic Segre Tp, l = 1: tables/ms-l1.md
+          - Motivic Segre Tp, l = 2: tables/ms-l2.md
+          - Motivic Segre Tp, l = 3: tables/ms-l3.md
       - Multi-singularities:
           - Target SSM, l = 1: tables/target-ssm-l1.md
           - Target SSM, l = 2: tables/target-ssm-l2.md
@@ -113,6 +128,7 @@ nav:
 not_in_nav: |
   /singularities/contact/*.md
   /singularities/multi/*.md
+  /singularities/thom-boardman/*.md
 
 validation:
   nav:

@@ -1,0 +1,25 @@
+# title: K-theoretic Thom polynomial of III23, push-forward version, relative dimension l=2
+# entity: III23
+# kind: ktp
+# l: 2
+# codimension: 11
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# terms: 22
+# degrees: 11..16
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: MODEL (resolution model, not refereed) -- Kazarian's resolution model (M. Kazarian, Non-associative Hilbert scheme and Thom polynomials, arXiv:1712.09270), used in K-theory
+# expansion-status: VER (computed and verified numerically) -- compared with the formula at random points
+# completeness: finite expansion; every nonzero coefficient is listed, among all partitions with lambda_6 <= 7 (no term outside this range is expected)
+# source: L. M. Fehér, R. Rimányi: K theory Thom polynomials, in preparation, 2026
+# dataset: data set of 2026-11-25, table KTp/III23/l2
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_l2.txt":
+KTp_III23_l2_grothendieck :=
+2*gr[[4,4,3]] +4*gr[[5,4,2]] +8*gr[[6,4,1]] +16*gr[[7,4]]
+-gr[[4,4,4]] -5*gr[[5,4,3]] -12*gr[[6,4,2]] -28*gr[[7,4,1]] -32*gr[[8,4]]
++gr[[5,4,4]] +4*gr[[6,4,3]] +13*gr[[7,4,2]] +38*gr[[8,4,1]] +24*gr[[9,4]]
+-gr[[7,4,3]] -6*gr[[8,4,2]] -25*gr[[9,4,1]] -8*gr[[10,4]]
++gr[[9,4,2]] +8*gr[[10,4,1]] +gr[[11,4]]
+-gr[[11,4,1]]
+:

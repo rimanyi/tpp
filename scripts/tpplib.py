@@ -15,12 +15,28 @@ Data-file format (one file per cell: entity x kind x l):
 Header lines are comments for Maple ('#'), so `read "tp_l2.txt":` in Maple defines
 the polynomials.  Each Maple assignment ends with ':'.  Expressions that are not
 Maple expressions (TeX) are stored as Maple strings ("...").
+
+K-theory (kinds ktp, ktp_ms0, ms): expansions in double stable Grothendieck polynomials,
+written gr[[lambda]] like s[[lambda]] for Schur polynomials (gr is the name used by the Maple package
+"Double stable Grothendieck polynomials" on the Downloads page: subs(GR[k,l], gr[lambda])):
+
+    KTp_A2_l0_grothendieck :=          one line per degree |lambda|
+    gr[[1,1]] +2*gr[[2]]
+    -2*gr[[2,1]] -gr[[3]]
+    +gr[[3,1]]
+    :
+    MS_A2_l0_closure_grothendieck :=   one block per order of z
+    +z^0*( ... )
+    +z^1*( ... )
+    :
 """
 import os
 import re
 
-HEADER_ORDER = ['title', 'entity', 'kind', 'l', 'codimension', 'computed-up-to-degree', 'local-algebra', 'tp-degree', 'format',
-                'variables', 'source', 'remark', 'note', 'convention', 'retrieved-from']
+HEADER_ORDER = ['title', 'entity', 'kind', 'l', 'codimension', 'locus', 'computed-up-to-degree', 'computed-up-to-z-order', 'partial',
+                'version', 'ms0-version', 'same-closure-as', 'terms', 'degrees', 'nonzero-per-z-order', 'top-degree-per-z-order',
+                'local-algebra', 'tp-degree', 'format', 'variables', 'formula-status', 'expansion-status', 'completeness',
+                'source', 'old-portal', 'dataset', 'remark', 'note', 'convention', 'retrieved-from']
 
 # ------------------------------------------------------------------ data files
 
@@ -164,3 +180,101 @@ def multi_html(mid):
 
 def multi_slug(mid):
     return 'empty' if mid == 'EMPTY' else mid
+
+
+# ------------------------------------------------------------------ Grothendieck expansions (K-theory)
+
+def _gterm(lam, c):
+    g = 'gr[[' + ','.join(map(str, lam)) + ']]'
+    if c == 1:
+        return '+' + g
+    if c == -1:
+        return '-' + g
+    return ('+' if c > 0 else '-') + str(abs(c)) + '*' + g
+
+
+def g_expr(tab):
+    """{partition: integer} -> Maple expression, one line per degree, partitions in increasing order."""
+    by = {}
+    for lam in sorted(tab, key=lambda p: (sum(p), p)):
+        if tab[lam]:
+            by.setdefault(sum(lam), []).append(_gterm(lam, tab[lam]))
+    s = '\n'.join(' '.join(by[n]) for n in sorted(by))
+    return s[1:] if s.startswith('+') else s
+
+
+def ms_expr(tab, K):
+    """{partition: [c_0..c_K]} -> Maple expression  +z^0*( ... ) +z^1*( ... ) ..., one block per order of z."""
+    blocks = []
+    for k in range(K + 1):
+        sub = {lam: cs[k] for lam, cs in tab.items() if cs[k]}
+        if not sub:
+            continue
+        body = g_expr(sub)
+        blocks.append(f'+z^{k}*(\n{body}\n)' if '\n' in body else f'+z^{k}*( {body} )')
+    return '\n'.join(blocks)
+
+
+G_TERM = re.compile(r'([+-]?)\s*(\d*)\s*\*?\s*gr\[\[([\d,\s]*)\]\]')
+
+
+def parse_g(expr):
+    """Inverse of g_expr."""
+    out = {}
+    for sign, coef, lam in G_TERM.findall(expr):
+        lam = tuple(int(x) for x in lam.replace(' ', '').split(',') if x)
+        out[lam] = out.get(lam, 0) + (-1 if sign == '-' else 1) * int(coef or 1)
+    return {k: v for k, v in out.items() if v}
+
+
+Z_BLOCK = re.compile(r'\+z\^(\d+)\*\((.*?)\)\s*(?=\+z\^|\Z)', re.S)
+
+
+def ms_blocks(expr):
+    """[(k, text of the block of z^k)] of an ms expression."""
+    return [(int(k), body.strip()) for k, body in Z_BLOCK.findall(expr)]
+
+
+def parse_ms(expr, K):
+    """Inverse of ms_expr: {partition: [c_0..c_K]}."""
+    out = {}
+    for k, body in ms_blocks(expr):
+        for lam, c in parse_g(body).items():
+            out.setdefault(lam, [0] * (K + 1))[k] = c
+    return out
+
+
+def g_tex(expr, max_terms=40):
+    """TeX of a Grothendieck expansion (None if it has more than max_terms terms)."""
+    if len(G_TERM.findall(expr)) > max_terms:
+        return None
+    lines = []
+    for ln in expr.strip().split('\n'):
+        t = re.sub(r'gr\[\[([\d,\s]*)\]\]', lambda m: 'G_{' + (m.group(1).replace(' ', '') or r'\varnothing') + '}', ln.strip())
+        t = re.sub(r'\s*([+-])', r' \1 ', t).replace('*', r'\,').strip()
+        lines.append(t)
+    if len(lines) == 1:
+        return re.sub(r'^\+\s*', '', lines[0])
+    lines[0] = re.sub(r'^\+\s*', '', lines[0])
+    return r'\begin{aligned}' + r' \\ '.join('& ' + ln for ln in lines) + r'\end{aligned}'
+
+# ------------------------------------------------------------------ Thom-Boardman classes
+
+_SUP = str.maketrans('0123456789,', '⁰¹²³⁴⁵⁶⁷⁸⁹’')
+
+
+def tb_symbol(tid):
+    """'Sigma2' -> '2';  'Sigma2-1' -> '2,1'  (ids of Thom-Boardman classes: Sigma + the symbol, parts joined by '-')."""
+    return tid[len('Sigma'):].replace('-', ',')
+
+
+def tb_tex(tid):
+    return r'\Sigma^{%s}' % tb_symbol(tid)
+
+
+def tb_html(tid):
+    return 'Σ<sup>%s</sup>' % tb_symbol(tid)
+
+
+def tb_plain(tid):
+    return 'Σ' + tb_symbol(tid).translate(_SUP)

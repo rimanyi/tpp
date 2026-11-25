@@ -91,3 +91,26 @@
 .md-typeset details.tpp-cell > summary::before { position: static; -webkit-mask-image: none; mask-image: none; background: none; width: .9rem; height: auto; transform: none; color: var(--md-default-fg-color--light); }
 .md-typeset details.tpp-cell > summary::after { display: none; }
 .md-typeset details.tpp-cell:focus-within, .md-typeset details.tpp-cell { box-shadow: none; }
+/* K-theory: status labels, status details, per-order tables */
+.md-typeset .tpp-st { display: inline-block; font-size: .58rem; letter-spacing: .02em; border: 1px solid var(--tpp-line); border-radius: .2rem; padding: 0 .35rem; margin: 0 .25rem 0 0; white-space: nowrap; color: var(--md-default-fg-color--light); font-weight: 400; }
+.md-typeset .tpp-st-thm, .md-typeset .tpp-st-ver { color: var(--tpp-accent); border-color: var(--tpp-accent); }
+.md-typeset .tpp-st-model, .md-typeset .tpp-st-arg { color: var(--tpp-kind); border-color: var(--tpp-kind); }
+.md-typeset .tpp-st-partial { color: var(--tpp-warn); border-color: var(--tpp-warn); }
+.md-typeset .tpp-part { font-size: .55rem; color: var(--tpp-warn); margin-left: .2rem; font-weight: 400; }
+.md-typeset details.tpp-status { font-size: .66rem; border: 0; border-left: 2px solid var(--tpp-soft); box-shadow: none; background: none; margin: .5rem 0 .3rem; padding: 0 0 0 .6rem; overflow: visible; }
+.md-typeset details.tpp-status > summary { cursor: pointer; padding: .1rem 0; margin: 0; background: none; font-weight: 400; color: var(--md-default-fg-color--light); border: 0; min-height: 0; }
+.md-typeset details.tpp-status > summary::before { position: static; display: inline-block; content: "▸"; width: .8rem; height: auto; -webkit-mask-image: none; mask-image: none; background: none; transform: none; }
+.md-typeset details.tpp-status[open] > summary::before { content: "▾"; }
+.md-typeset details.tpp-status > summary::after { display: none; }
+.md-typeset details.tpp-status dl { margin: .2rem 0; }
+.md-typeset details.tpp-status dt { font-size: .6rem; letter-spacing: .05em; text-transform: uppercase; color: var(--md-default-fg-color--light); font-weight: 400; margin: .35rem 0 0; }
+.md-typeset details.tpp-status dd { margin: .05rem 0 0; overflow-wrap: anywhere; }
+.md-typeset details.tpp-status ul { margin: 0; }
+.md-typeset details.tpp-status li { margin: 0 0 0 1rem; }
+.md-typeset table.tpp-orders { min-width: 0; }
+.md-typeset table.tpp-orders th { text-align: left; white-space: nowrap; font-weight: 400; }
+.md-typeset table.tpp-orders td { text-align: right; }
+.md-typeset table.tpp-grid th.tpp-sub { text-align: left; font-weight: 400; font-style: italic; }
+.md-typeset table.tpp-plain td .tpp-st { margin-bottom: .1rem; }
+.md-typeset .tpp-sts { display: inline-flex; flex-wrap: wrap; gap: .2rem .25rem; align-items: baseline; }
+.md-typeset .tpp-sts .tpp-st { margin: 0; }

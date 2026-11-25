@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+# working data sets (tables with code and logs) are kept outside the repository
+datasets/

@@ -1,0 +1,32 @@
+# title: K-theoretic Thom polynomial of A3, push-forward version, relative dimension l=2
+# entity: A3
+# kind: ktp
+# l: 2
+# codimension: 9
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# terms: 171
+# degrees: 9..21
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- Rimanyi-Szenes, Thm 10.1 (residue formula)
+# expansion-status: VER (computed and verified numerically) -- compared with the formula at random points
+# completeness: finite expansion; every nonzero coefficient is listed, among all partitions with lambda_6 <= 7 (no term outside this range is expected)
+# source: L. M. Fehér, R. Rimányi: K theory Thom polynomials, in preparation, 2026
+# dataset: data set of 2026-11-25, table KTp/A3/l2
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_l2.txt":
+KTp_A3_l2_grothendieck :=
+gr[[3,3,3]] +5*gr[[4,3,2]] +5*gr[[4,4,1]] +6*gr[[5,2,2]] +19*gr[[5,3,1]] +24*gr[[5,4]] +30*gr[[6,2,1]] +65*gr[[6,3]] +36*gr[[7,1,1]] +114*gr[[7,2]] +180*gr[[8,1]] +216*gr[[9]]
+-5*gr[[4,3,3]] -9*gr[[4,4,2]] -35*gr[[5,3,2]] -57*gr[[5,4,1]] -33*gr[[5,5]] -39*gr[[6,2,2]] -156*gr[[6,3,1]] -159*gr[[6,4]] -255*gr[[7,2,1]] -390*gr[[7,3]] -288*gr[[8,1,1]] -717*gr[[8,2]] -1116*gr[[9,1]] -972*gr[[10]]
++4*gr[[4,4,3]] +10*gr[[5,3,3]] +43*gr[[5,4,2]] +43*gr[[5,5,1]] +110*gr[[6,3,2]] +240*gr[[6,4,1]] +124*gr[[6,5]] +110*gr[[7,2,2]] +585*gr[[7,3,1]] +447*gr[[7,4]] +1000*gr[[8,2,1]] +1075*gr[[8,3]] +1041*gr[[9,1,1]] +2084*gr[[9,2]] +3117*gr[[10,1]] +1998*gr[[11]]
+-10*gr[[5,4,3]] -10*gr[[5,5,2]] -10*gr[[6,3,3]] -91*gr[[6,4,2]] -144*gr[[6,5,1]] -20*gr[[6,6]] -205*gr[[7,3,2]] -552*gr[[7,4,1]] -206*gr[[7,5]] -176*gr[[8,2,2]] -1324*gr[[8,3,1]] -717*gr[[8,4]] -2400*gr[[9,2,1]] -1800*gr[[9,3]] -2247*gr[[10,1,1]] -3723*gr[[10,2]] -5178*gr[[11,1]] -2457*gr[[12]]
++10*gr[[6,4,3]] +20*gr[[6,5,2]] +20*gr[[6,6,1]] +5*gr[[7,3,3]] +110*gr[[7,4,2]] +221*gr[[7,5,1]] +35*gr[[7,6]] +251*gr[[8,3,2]] +797*gr[[8,4,1]] +200*gr[[8,5]] +175*gr[[9,2,2]] +2010*gr[[9,3,1]] +731*gr[[9,4]] +3936*gr[[10,2,1]] +2028*gr[[10,3]] +3223*gr[[11,1,1]] +4567*gr[[11,2]] +5678*gr[[12,1]] +1989*gr[[13]]
+-5*gr[[7,4,3]] -15*gr[[7,5,2]] -35*gr[[7,6,1]] -gr[[8,3,3]] -81*gr[[8,4,2]] -206*gr[[8,5,1]] -21*gr[[8,6]] -210*gr[[9,3,2]] -767*gr[[9,4,1]] -122*gr[[9,5]] -111*gr[[10,2,2]] -2148*gr[[10,3,1]] -495*gr[[10,4]] -4654*gr[[11,2,1]] -1602*gr[[11,3]] -3231*gr[[12,1,1]] -4050*gr[[12,2]] -4302*gr[[13,1]] -1098*gr[[14]]
++gr[[8,4,3]] +6*gr[[8,5,2]] +21*gr[[8,6,1]] +36*gr[[9,4,2]] +123*gr[[9,5,1]] +7*gr[[9,6]] +120*gr[[10,3,2]] +504*gr[[10,4,1]] +46*gr[[10,5]] +44*gr[[11,2,2]] +1647*gr[[11,3,1]] +225*gr[[11,4]] +4070*gr[[12,2,1]] +895*gr[[12,3]] +2314*gr[[13,1,1]] +2649*gr[[13,2]] +2284*gr[[14,1]] +413*gr[[15]]
+-gr[[9,5,2]] -7*gr[[9,6,1]] -9*gr[[10,4,2]] -46*gr[[10,5,1]] -gr[[10,6]] -45*gr[[11,3,2]] -226*gr[[11,4,1]] -10*gr[[11,5]] -10*gr[[12,2,2]] -905*gr[[12,3,1]] -67*gr[[12,4]] -2651*gr[[13,2,1]] -348*gr[[13,3]] -1186*gr[[14,1,1]] -1275*gr[[14,2]] -840*gr[[15,1]] -102*gr[[16]]
++gr[[10,6,1]] +gr[[11,4,2]] +10*gr[[11,5,1]] +10*gr[[12,3,2]] +67*gr[[12,4,1]] +gr[[12,5]] +gr[[13,2,2]] +349*gr[[13,3,1]] +12*gr[[13,4]] +1275*gr[[14,2,1]] +90*gr[[14,3]] +427*gr[[15,1,1]] +441*gr[[15,2]] +205*gr[[16,1]] +15*gr[[17]]
+-gr[[12,5,1]] -gr[[13,3,2]] -12*gr[[13,4,1]] -90*gr[[14,3,1]] -gr[[14,4]] -441*gr[[15,2,1]] -14*gr[[15,3]] -103*gr[[16,1,1]] -104*gr[[16,2]] -30*gr[[17,1]] -gr[[18]]
++gr[[14,4,1]] +14*gr[[15,3,1]] +104*gr[[16,2,1]] +gr[[16,3]] +15*gr[[17,1,1]] +15*gr[[17,2]] +2*gr[[18,1]]
+-gr[[16,3,1]] -15*gr[[17,2,1]] -gr[[18,1,1]] -gr[[18,2]]
++gr[[18,2,1]]
+:

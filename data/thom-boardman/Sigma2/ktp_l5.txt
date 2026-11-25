@@ -1,0 +1,20 @@
+# title: K-theoretic Thom polynomial of Sigma2, push-forward version, relative dimension l=5
+# entity: Sigma2
+# kind: ktp
+# l: 5
+# codimension: 14
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# ms0-version: equal to this push-forward version (proved: determinantal varieties have rational singularities)
+# same-closure-as: III22 (at this l)
+# terms: 1
+# degrees: 14..14
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- K-theoretic Giambelli-Thom-Porteous formula (see Rimanyi-Szenes, Thm 7.1)
+# expansion-status: THM (theorem) -- a single Grothendieck polynomial
+# completeness: finite expansion; every nonzero coefficient is listed (theorem)
+# source: classical (reference to be added)
+# dataset: data set of 2026-11-25, table KTp/Sigma2/l5
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_l5.txt":
+KTp_Sigma2_l5_grothendieck := gr[[7,7]]:

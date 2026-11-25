@@ -1,0 +1,33 @@
+# Catalog of Thom-Boardman classes that have their own page on the portal.
+# One entry per class; data files go to data/thom-boardman/<id>/.
+# Fields: id (Sigma + the Boardman symbol, parts joined by '-': Sigma2, Sigma2-1), definition, codim (as a function of l),
+#   l_range, same_closure (contact singularities that are open and dense in the class for the stated l, so that they
+#   have the same closure and the same closure-type classes), notes.
+# Started on 2026-11-25 with the classes Sigma^r of the K-theory data set; edit freely.
+
+- id: Sigma1
+  definition: the points where the derivative has corank 1 (a kernel of dimension 1)
+  codim: l+1
+  l_range: l=0,1,2,...
+  same_closure:
+  - {id: A1, l: 'all l'}
+- id: Sigma2
+  definition: the points where the derivative has corank 2 (a kernel of dimension 2)
+  codim: 2l+4
+  l_range: l=0,1,2,...
+  same_closure:
+  - {id: I22, l: 'l = 0'}
+  - {id: III22, l: 'l ≥ 1'}
+- id: Sigma3
+  definition: the points where the derivative has corank 3 (a kernel of dimension 3)
+  codim: 3l+9
+  l_range: l=0,1,2,...
+  same_closure:
+  - {id: C41, l: 'l = 2'}
+  - {id: C3, l: 'l ≥ 3'}
+- id: Sigma4
+  definition: the points where the derivative has corank 4 (a kernel of dimension 4)
+  codim: 4l+16
+  l_range: l=0,1,2,...
+  same_closure:
+  - {id: D4, l: 'l ≥ 6'}

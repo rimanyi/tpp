@@ -1,11 +1,25 @@
-# title: K-theoretic Thom polynomial of A2, relative dimension l=1
+# title: K-theoretic Thom polynomial of A2, push-forward version, relative dimension l=1
 # entity: A2
 # kind: ktp
 # l: 1
 # codimension: 4
-# format: TeX-like Grothendieck expansion g_{lambda}, stored as a Maple string (to be normalised to Maple syntax)
-# variables: g_{lambda} = (stable) Grothendieck polynomial; K-theoretic fundamental class = class of the structure sheaf of a resolution, pushed forward
-# source: R. Rimanyi, A. Szenes: Residuesin Grothendieck polynomials, and K-theroetic Thom polynomials, preprint
-# retrieved-from: https://tpp.web.unc.edu/ktps-l1/ (page modified 2025-02-08)
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# ms0-version: equal to this push-forward version (verified numerically for l = 0..3)
+# terms: 10
+# degrees: 4..7
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- Rimanyi-Szenes, Thm 8.1 (residue formula)
+# expansion-status: THM (theorem) -- Rimanyi-Szenes, Thm 8.4
+# completeness: finite expansion; every nonzero coefficient is listed (theorem)
+# source: R. Rimányi, A. Szenes: Residues, Grothendieck polynomials, and K-theoretic Thom polynomials, Int. Math. Res. Not. IMRN, https://doi.org/10.1093/imrn/rnac345
+# old-portal: identical to the entry on https://tpp.web.unc.edu/ktps-l1/ (page modified 2025-02-08)
+# dataset: data set of 2026-11-25, table KTp/A2/l1
+# convention: TPP 2026-K
 # Read into Maple with:  read "ktp_l1.txt":
-KTp_A2_l1_tex := "g_{2, 2}+ 2g_{3, 1}+ 4g_{4} - ( 2g_{3, 2}+ 5g_{4, 1}+ 4g_{5} ) + g_{4, 2}+ 4g_{5, 1}+ g_{6} -g_{6, 1}":
+KTp_A2_l1_grothendieck :=
+gr[[2,2]] +2*gr[[3,1]] +4*gr[[4]]
+-2*gr[[3,2]] -5*gr[[4,1]] -4*gr[[5]]
++gr[[4,2]] +4*gr[[5,1]] +gr[[6]]
+-gr[[6,1]]
+:

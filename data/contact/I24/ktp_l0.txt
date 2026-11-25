@@ -1,0 +1,29 @@
+# title: K-theoretic Thom polynomial of I24, push-forward version, relative dimension l=0
+# entity: I24
+# kind: ktp
+# l: 0
+# codimension: 6
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# terms: 72
+# degrees: 6..15
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: MODEL (resolution model, not refereed) -- Kazarian's resolution model (M. Kazarian, Non-associative Hilbert scheme and Thom polynomials, arXiv:1712.09270), used in K-theory
+# expansion-status: VER (computed and verified numerically) -- compared with the formula at random points
+# completeness: finite expansion; every nonzero coefficient is listed, among all partitions with lambda_7 <= 6 (no term outside this range is expected)
+# source: L. M. Fehér, R. Rimányi: K theory Thom polynomials, in preparation, 2026
+# dataset: data set of 2026-11-25, table KTp/I24/l0
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_l0.txt":
+KTp_I24_l0_grothendieck :=
+2*gr[[2,2,1,1]] +5*gr[[2,2,2]] +12*gr[[3,2,1]] +4*gr[[3,3]] +16*gr[[4,2]]
+-6*gr[[2,2,2,1]] -13*gr[[3,2,1,1]] -26*gr[[3,2,2]] -15*gr[[3,3,1]] -52*gr[[4,2,1]] -20*gr[[4,3]] -40*gr[[5,2]]
++27*gr[[3,2,2,1]] +11*gr[[3,3,1,1]] +21*gr[[3,3,2]] +36*gr[[4,2,1,1]] +56*gr[[4,2,2]] +56*gr[[4,3,1]] +95*gr[[5,2,1]] +41*gr[[5,3]] +44*gr[[6,2]]
+-21*gr[[3,3,2,1]] -56*gr[[4,2,2,1]] -36*gr[[4,3,1,1]] -56*gr[[4,3,2]] -55*gr[[5,2,1,1]] -70*gr[[5,2,2]] -96*gr[[5,3,1]] -94*gr[[6,2,1]] -44*gr[[6,3]] -26*gr[[7,2]]
++56*gr[[4,3,2,1]] +70*gr[[5,2,2,1]] +55*gr[[5,3,1,1]] +70*gr[[5,3,2]] +50*gr[[6,2,1,1]] +56*gr[[6,2,2]] +94*gr[[6,3,1]] +53*gr[[7,2,1]] +26*gr[[7,3]] +8*gr[[8,2]]
+-70*gr[[5,3,2,1]] -56*gr[[6,2,2,1]] -50*gr[[6,3,1,1]] -56*gr[[6,3,2]] -27*gr[[7,2,1,1]] -28*gr[[7,2,2]] -53*gr[[7,3,1]] -16*gr[[8,2,1]] -8*gr[[8,3]] -gr[[9,2]]
++56*gr[[6,3,2,1]] +28*gr[[7,2,2,1]] +27*gr[[7,3,1,1]] +28*gr[[7,3,2]] +8*gr[[8,2,1,1]] +8*gr[[8,2,2]] +16*gr[[8,3,1]] +2*gr[[9,2,1]] +gr[[9,3]]
+-28*gr[[7,3,2,1]] -8*gr[[8,2,2,1]] -8*gr[[8,3,1,1]] -8*gr[[8,3,2]] -gr[[9,2,1,1]] -gr[[9,2,2]] -2*gr[[9,3,1]]
++8*gr[[8,3,2,1]] +gr[[9,2,2,1]] +gr[[9,3,1,1]] +gr[[9,3,2]]
+-gr[[9,3,2,1]]
+:

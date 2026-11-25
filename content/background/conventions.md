@@ -47,9 +47,59 @@ $\Delta_\lambda=\det(d_{\lambda_i+j-i})$.
 
 ## K-theory
 
-K-theoretic Thom polynomials are written in the Grothendieck expansion $g_\lambda$; the K-theoretic fundamental
-class used is the class of the structure sheaf of a resolution, pushed forward
-(see [K-theoretic Thom polynomials](k-theory.md)).
+K-theoretic Thom polynomials and motivic Segre Thom polynomials are written in double stable Grothendieck polynomials
+$G_\lambda$, in the convention of Rimányi–Szenes. (The old portal wrote $g_\lambda$ for the same polynomials.)
+
+*Variables.* $\alpha_1,\dots,\alpha_n$ are the K-theoretic Chern roots (classes of line bundles) of the source and
+$\beta_1,\dots,\beta_{n+l}$ those of the target. Any one of the following fixes the convention:
+
+* with $\alpha_i=e^{a_i}$, $\beta_j=e^{b_j}$ one has $G_\lambda=s_\lambda+{}$higher order terms, where $s_\lambda$ is
+  the Schur polynomial of the Thom polynomial pages ($s_{1}=c_1$, $s_{2}=c_2$, $s_{1,1}=c_1^2-c_2$);
+* for one source and one target variable, $G_{(m,1^j)}=(1-\alpha/\beta)(1-\alpha)^{m-1}(1-1/\beta)^j$ and every other
+  $G_\lambda$ is $0$;
+* test case: the push-forward K-theoretic Thom polynomial of $A_2$ for $l=0$ is
+  $G_{1,1}+2G_{2}-2G_{2,1}-G_{3}+G_{3,1}$.
+
+*Two versions of the K-theoretic Thom polynomial.* The **push-forward version** is the class of the structure sheaf of
+a resolution of the closure, pushed forward. The **MS<sub>0</sub> version** is the coefficient of $z^0$ of the motivic
+Segre Thom polynomial of the closure. They agree when the closure has mild singularities
+(see [K-theoretic Thom polynomials](k-theory.md) and [Motivic Segre Thom polynomials](motivic.md)).
+
+*The parameter of the motivic class* is $z$, with $y=-z/(1+z)$.
+
+*In the data files* (Maple syntax) `gr[[3,1]]` is $G_{(3,1)}$. This is the name used by the Maple package "Double
+stable Grothendieck polynomials" on the [Downloads](../downloads.md) page, so that `subs(GR[k,l], ...)` turns an
+expansion into a polynomial in the $\alpha_i,\beta_j$. *(To be confirmed: that the package follows the same
+convention.)* A K-theoretic Thom polynomial is written with one line per degree $\lvert\lambda\rvert$; a motivic Segre
+Thom polynomial as `+z^0*( ... ) +z^1*( ... ) + ...`, known up to the order recorded as `computed-up-to-z-order`.
+
+Every K-theoretic data file also records how certain it is (`formula-status`, `expansion-status`, `completeness`);
+the labels are explained on the [Motivic Segre Thom polynomials](motivic.md#how-certain-the-entries-are) page.
+
+## Orbit and closure
+
+A singularity $\eta$ is a locally closed set of germs; its closure $\overline\eta$ also contains the more degenerate
+singularities. Which of the two a class refers to depends on the kind of class.
+
+| Class | Refers to |
+|---|---|
+| Thom polynomial | the closure (it is the fundamental class of $\overline\eta$) |
+| K-theoretic Thom polynomial, both versions | the closure |
+| SSM-Thom polynomial | either; **the portal holds the class of the singularity locus $\eta$ itself** |
+| Motivic Segre Thom polynomial | either; **so far the portal holds the class of the closure $\overline\eta$** |
+
+The two variants carry the same information once the whole hierarchy is known: the class of the closure is the sum of
+the classes of all singularities contained in it. For example, for $l=0$,
+$\mathrm{SSM}(\overline{\Sigma^1})=\mathrm{SSM}(A_1)+\mathrm{SSM}(\overline{A_2})$ and
+$\mathrm{SSM}(A_0)=1-\mathrm{SSM}(\overline{\Sigma^1})$.
+
+Both variants are shown on the page of the singularity, in the same section, labelled "closure" or "orbit". In the
+data files the header line `locus:` says which one a file contains, and for motivic Segre Thom polynomials it is also
+part of the file name: `ms_closure_l0.txt`, `ms_orbit_l0.txt`.
+
+A [Thom–Boardman class](../singularities/thom-boardman.md) and the contact singularity that is open and dense in it
+have the same closure, hence the same closure-type classes; these are stored once, on the page of the Thom–Boardman
+class, and the page of the contact singularity points there.
 
 ## Convention versions
 

@@ -1,0 +1,19 @@
+# title: K-theoretic Thom polynomial of Sigma3, push-forward version, relative dimension l=8
+# entity: Sigma3
+# kind: ktp
+# l: 8
+# codimension: 33
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# ms0-version: equal to this push-forward version (proved: determinantal varieties have rational singularities)
+# terms: 1
+# degrees: 33..33
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- K-theoretic Giambelli-Thom-Porteous formula (see Rimanyi-Szenes, Thm 7.1)
+# expansion-status: THM (theorem) -- a single Grothendieck polynomial
+# completeness: finite expansion; every nonzero coefficient is listed (theorem)
+# source: classical (reference to be added)
+# dataset: data set of 2026-11-25, table KTp/Sigma3/l8
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_l8.txt":
+KTp_Sigma3_l8_grothendieck := gr[[11,11,11]]:

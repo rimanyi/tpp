@@ -1,0 +1,28 @@
+# title: K-theoretic Thom polynomial of A2, push-forward version, relative dimension l=6
+# entity: A2
+# kind: ktp
+# l: 6
+# codimension: 14
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# terms: 50
+# degrees: 14..22
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- Rimanyi-Szenes, Thm 8.1 (residue formula)
+# expansion-status: THM (theorem) -- Rimanyi-Szenes, Thm 8.4
+# completeness: finite expansion; every nonzero coefficient is listed (theorem)
+# source: R. Rimányi, A. Szenes: Residues, Grothendieck polynomials, and K-theoretic Thom polynomials, Int. Math. Res. Not. IMRN, https://doi.org/10.1093/imrn/rnac345
+# dataset: data set of 2026-11-25, table KTp/A2/l6
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_l6.txt":
+KTp_A2_l6_grothendieck :=
+gr[[7,7]] +2*gr[[8,6]] +4*gr[[9,5]] +8*gr[[10,4]] +16*gr[[11,3]] +32*gr[[12,2]] +64*gr[[13,1]] +128*gr[[14]]
+-2*gr[[8,7]] -5*gr[[9,6]] -12*gr[[10,5]] -28*gr[[11,4]] -64*gr[[12,3]] -144*gr[[13,2]] -320*gr[[14,1]] -448*gr[[15]]
++gr[[9,7]] +4*gr[[10,6]] +13*gr[[11,5]] +38*gr[[12,4]] +104*gr[[13,3]] +272*gr[[14,2]] +688*gr[[15,1]] +672*gr[[16]]
+-gr[[11,6]] -6*gr[[12,5]] -25*gr[[13,4]] -88*gr[[14,3]] -280*gr[[15,2]] -832*gr[[16,1]] -560*gr[[17]]
++gr[[13,5]] +8*gr[[14,4]] +41*gr[[15,3]] +170*gr[[16,2]] +620*gr[[17,1]] +280*gr[[18]]
+-gr[[15,4]] -10*gr[[16,3]] -61*gr[[17,2]] -292*gr[[18,1]] -84*gr[[19]]
++gr[[17,3]] +12*gr[[18,2]] +85*gr[[19,1]] +14*gr[[20]]
+-gr[[19,2]] -14*gr[[20,1]] -gr[[21]]
++gr[[21,1]]
+:

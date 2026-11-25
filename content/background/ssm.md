@@ -3,6 +3,10 @@
 !!! note "To be written"
     The old site said "explanation to be added later". The tables are under [Tables](@MD@/tables/index.md).
 
+The SSM-Thom polynomials on the portal are the classes of the singularity locus itself, not of its closure; see
+[Orbit and closure](conventions.md#orbit-and-closure). Their K-theoretic counterparts are the
+[motivic Segre Thom polynomials](motivic.md).
+
 <div class="wp-content" markdown="0">
 <H4>Segre-Schwatrz-MacPherson-Thom polynomials</h4>Explanation to be added later.<ul><li> <a href="@ROOT@/tables/ssm-l0/">SSM Thom polynomials of contact singularities of relative dimension 0</a></li><li> <a href="@ROOT@/tables/ssm-l1/">SSM Thom polynomials of contact singularities of relative dimension 1</a></li></ul>
 </div>

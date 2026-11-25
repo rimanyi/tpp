@@ -43,8 +43,6 @@
   tb_class: \Sigma^{1,1,0}
   remarks:
   - This contact singularity is open in its Thom-Boardman class.
-  in_preparation:
-  - Motivic-Segre Thom polynomials (R. Rimányi, 2026)
   symmetry_record: '[A2,[a[1]],[3*a[1]],[2*a[1]],[a[1],2*a[1]],1/(1-q)]'
 - id: III22
   name: III_{22}
@@ -73,8 +71,6 @@
   tb_class: \Sigma^{1,1,1,0}
   remarks:
   - This contact singularity is open in its Thom-Boardman class.
-  in_preparation:
-  - Motivic-Segre Thom polynomials (R. Rimányi, 2026)
   symmetry_record: '[A3,[a[1]],[4*a[1]],[2*a[1],3*a[1]],[a[1],2*a[1],3*a[1]],1/(1-q)]'
 - id: I22
   name: I_{22}
@@ -131,8 +127,6 @@
     the first known Thom polynomial whose calculation required consideration of non-Morin singularities. Warning: This Thom
     polynomial is wrongly quoted in V. A. Vassiliev, V. Arnold, V. Goryunov, O. Lyashko: Dynamical Systems VI. Singularity
     Theory I. Encyclopaedia of Math. Sciences Vol. 6, Springer 1993'
-  in_preparation:
-  - Motivic-Segre Thom polynomials (R. Rimányi, 2026)
   symmetry_record: '[A4,[a[1]],[5*a[1]],[2*a[1],3*a[1],4*a[1]],[a[1],2*a[1],3*a[1],4*a[1]],1/(1-q)]'
 - id: I23
   name: I_{23}

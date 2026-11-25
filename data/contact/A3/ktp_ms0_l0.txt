@@ -1,0 +1,26 @@
+# title: K-theoretic Thom polynomial of A3, MS0 version, relative dimension l=0
+# entity: A3
+# kind: ktp_ms0
+# l: 0
+# codimension: 3
+# locus: closure
+# version: MS0 (the class mC_0 of the closure; the z^0 coefficient of the motivic Segre Thom polynomial of the closure). Differs from the push-forward version for this singularity
+# terms: 29
+# degrees: 3..9
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: ARG (argued, not proved) -- details in the paper in preparation
+# expansion-status: VER (computed and verified numerically) -- compared with the formula at random points
+# completeness: finite expansion; every nonzero coefficient is listed
+# source: L. M. Fehér, R. Rimányi: K theory Thom polynomials, in preparation, 2026
+# dataset: data set of 2026-11-25, table mstp0/A3bar/l0
+# convention: TPP 2026-K
+# Read into Maple with:  read "ktp_ms0_l0.txt":
+KTpMS0_A3_l0_grothendieck :=
+gr[[1,1,1]] +5*gr[[2,1]] +6*gr[[3]]
+-5*gr[[2,1,1]] -5*gr[[2,2]] -16*gr[[3,1]] -9*gr[[4]]
++5*gr[[2,2,1]] +10*gr[[3,1,1]] +12*gr[[3,2]] +19*gr[[4,1]] +5*gr[[5]]
+-12*gr[[3,2,1]] -gr[[3,3]] -10*gr[[4,1,1]] -11*gr[[4,2]] -10*gr[[5,1]] -gr[[6]]
++gr[[3,3,1]] +11*gr[[4,2,1]] +gr[[4,3]] +5*gr[[5,1,1]] +5*gr[[5,2]] +2*gr[[6,1]]
+-gr[[4,3,1]] -5*gr[[5,2,1]] -gr[[6,1,1]] -gr[[6,2]]
++gr[[6,2,1]]
+:

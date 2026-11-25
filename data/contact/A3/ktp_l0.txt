@@ -1,11 +1,27 @@
-# title: K-theoretic Thom polynomial of A3, relative dimension l=0
+# title: K-theoretic Thom polynomial of A3, push-forward version, relative dimension l=0
 # entity: A3
 # kind: ktp
 # l: 0
 # codimension: 3
-# format: TeX-like Grothendieck expansion g_{lambda}, stored as a Maple string (to be normalised to Maple syntax)
-# variables: g_{lambda} = (stable) Grothendieck polynomial; K-theoretic fundamental class = class of the structure sheaf of a resolution, pushed forward
-# source: not recorded on the old site (to be added)
-# retrieved-from: https://tpp.web.unc.edu/ktps-l0/ (page modified 2026-06-08)
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# terms: 25
+# degrees: 3..9
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- Rimanyi-Szenes, Thm 10.1 (residue formula)
+# expansion-status: VER (computed and verified numerically) -- compared with the formula at random points
+# completeness: finite expansion; every nonzero coefficient is listed, among all partitions with lambda_6 <= 5 (no term outside this range is expected)
+# source: L. M. Fehér, R. Rimányi: K theory Thom polynomials, in preparation, 2026
+# old-portal: identical to the entry on https://tpp.web.unc.edu/ktps-l0/ (page modified 2026-06-08)
+# dataset: data set of 2026-11-25, table KTp/A3/l0
+# convention: TPP 2026-K
 # Read into Maple with:  read "ktp_l0.txt":
-KTp_A3_l0_tex := "g_{1,1,1}+ 5g_{2,1}+ 6g_{3} - ( 5g_{2, 1, 1} + 16g_{3, 1}+ 9g_{4} ) + ( 10g_{3, 1, 1} + 19g_{4, 1} + 5g_{5} ) - ( 10g_{4, 1, 1} +10g_{5, 1} + g_{6} ) + ( 5g_{5,1,1}+2g_{6,1} ) - g_{6,1,1}":
+KTp_A3_l0_grothendieck :=
+gr[[1,1,1]] +5*gr[[2,1]] +6*gr[[3]]
+-5*gr[[2,1,1]] -4*gr[[2,2]] -16*gr[[3,1]] -9*gr[[4]]
++4*gr[[2,2,1]] +10*gr[[3,1,1]] +10*gr[[3,2]] +19*gr[[4,1]] +5*gr[[5]]
+-10*gr[[3,2,1]] -10*gr[[4,1,1]] -10*gr[[4,2]] -10*gr[[5,1]] -gr[[6]]
++10*gr[[4,2,1]] +5*gr[[5,1,1]] +5*gr[[5,2]] +2*gr[[6,1]]
+-5*gr[[5,2,1]] -gr[[6,1,1]] -gr[[6,2]]
++gr[[6,2,1]]
+:

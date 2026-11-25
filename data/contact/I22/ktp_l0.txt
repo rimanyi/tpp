@@ -1,11 +1,21 @@
-# title: K-theoretic Thom polynomial of I22, relative dimension l=0
+# title: K-theoretic Thom polynomial of I22, push-forward version, relative dimension l=0
 # entity: I22
 # kind: ktp
 # l: 0
 # codimension: 4
-# format: TeX-like Grothendieck expansion g_{lambda}, stored as a Maple string (to be normalised to Maple syntax)
-# variables: g_{lambda} = (stable) Grothendieck polynomial; K-theoretic fundamental class = class of the structure sheaf of a resolution, pushed forward
-# source: not recorded on the old site (to be added)
-# retrieved-from: https://tpp.web.unc.edu/ktps-l0/ (page modified 2026-06-08)
+# locus: closure
+# version: push-forward (the class of the structure sheaf of a resolution of the closure, pushed forward)
+# ms0-version: equal to this push-forward version (proved: determinantal varieties have rational singularities)
+# same-closure-as: Sigma2 (at this l)
+# terms: 1
+# degrees: 4..4
+# variables: gr[[lambda]] = double stable Grothendieck polynomial G_lambda, in the convention of Rimanyi-Szenes (see the Conventions page); gr[[]] = 1
+# formula-status: THM (theorem) -- K-theoretic Giambelli-Thom-Porteous formula (see Rimanyi-Szenes, Thm 7.1)
+# expansion-status: THM (theorem) -- a single Grothendieck polynomial
+# completeness: finite expansion; every nonzero coefficient is listed (theorem)
+# source: classical (reference to be added)
+# old-portal: identical to the entry on https://tpp.web.unc.edu/ktps-l0/ (page modified 2026-06-08)
+# dataset: data set of 2026-11-25, table KTp/I22/l0
+# convention: TPP 2026-K
 # Read into Maple with:  read "ktp_l0.txt":
-KTp_I22_l0_tex := "g_{2,2}":
+KTp_I22_l0_grothendieck := gr[[2,2]]:
